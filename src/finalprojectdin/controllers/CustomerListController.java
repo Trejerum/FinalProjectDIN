@@ -33,7 +33,7 @@ public class CustomerListController {
      * Button for creating a customer.
      */
     @FXML
-    private Button ButtonCreateCustomer;
+    private Button buttonCreateCustomer;
     
     /**
      * Button that closes the application.
@@ -63,7 +63,15 @@ public class CustomerListController {
         stage.setResizable(false);
         stage.show();
         
+        // Set listeners
         buttonClose.setOnAction(this::handleButtonCloseAction);
+        buttonCreateCustomer.setOnAction(this::handleButtonCreateCustomerAction);
+    }
+    
+    private void loadCustomerTableData() {
+        
+        
+        LOGGER.info("Customers loaded correctly...");
     }
     
     /**
@@ -71,7 +79,7 @@ public class CustomerListController {
      * CreateCustomerView for creating a customer.
      * @param event Action event.
      */
-    public void handleButtonCreateCustomerAction(ActionEvent event) {
+    private void handleButtonCreateCustomerAction(ActionEvent event) {
         
     }
     
@@ -79,7 +87,7 @@ public class CustomerListController {
      * Handles the close button action. Closes the application.
      * @param event Action event.
      */
-    public void handleButtonCloseAction(ActionEvent event) {
+    private void handleButtonCloseAction(ActionEvent event) {
         LOGGER.info("Closing application...");
         stage.hide();
     }
