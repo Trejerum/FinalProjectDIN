@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label prefHeight="53.0" prefWidth="601.0" style="-fx-border-color: black; -fx-background-color: #424242; -fx-text-fill: #F2F2F2;" text="Create Customer">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+         <padding>
+            <Insets left="40.0" />
+         </padding>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </Label>
+      <HBox prefHeight="249.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox prefHeight="340.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: #D8D8D8;">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="160.0" text="First name">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" top="50.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField id="textFieldFirstName" fx:id="textFieldFirstName">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label prefWidth="160.0" text="Last name">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField id="textFieldLastName" fx:id="textFieldLastName">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label prefWidth="160.0" text="Middle initial">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField id="textFieldMiddleInitial" fx:id="textFieldMiddleInitial">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: #D8D8D8;">
+               <children>
+                  <Label prefWidth="160.0" text="Street">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" top="50.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField id="textFieldStreet" fx:id="textFieldStreet">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label prefWidth="160.0" text="City">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField id="textFieldCity" fx:id="textFieldCity">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label prefWidth="160.0" text="State">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField id="textFieldState" fx:id="textFieldState">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: #D8D8D8;">
+               <children>
+                  <Label prefWidth="160.0" text="Zip">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" top="50.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField id="textFieldZip" fx:id="textFieldZip">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label prefWidth="160.0" text="Phone">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField id="textFieldPhone" fx:id="textFieldPhone">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label prefWidth="160.0" text="Email">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField id="textFieldEmail" fx:id="textFieldEmail">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="70.0" prefWidth="600.0" style="-fx-border-color: black; -fx-background-color: #D8D8D8;">
+         <children>
+            <Button id="buttonAccept" fx:id="buttonAccept" mnemonicParsing="false" text="Accept">
+               <HBox.margin>
+                  <Insets right="200.0" />
+               </HBox.margin>
+            </Button>
+            <Button id="buttonCancel" fx:id="buttonCancel" mnemonicParsing="false" text="Cancel">
+               <HBox.margin>
+                  <Insets left="200.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>
