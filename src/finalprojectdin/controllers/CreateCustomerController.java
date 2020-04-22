@@ -167,20 +167,24 @@ public class CreateCustomerController {
      * @param root Root to assign to the scene.
      */
     public void initStage(Parent root) {
-
+        // Create the scene
         Scene scene = new Scene(root);
+        
+        // Associate the scene to the stage
         stage.setScene(scene);
+        
+        // Set window properties
         stage.setTitle("Create Customer");
         stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.show();
-        
         setErrorLabelsVisibility(false);
         
-        // Set listeners
+        // Set event handlers
         buttonAccept.setOnAction(this::handleButtonAcceptAction);
         buttonCancel.setOnAction(this::handleButtonCancelAction);
         
+        // Show the window
+        stage.show();
     }
     
     /**

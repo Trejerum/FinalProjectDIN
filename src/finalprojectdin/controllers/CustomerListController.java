@@ -59,15 +59,22 @@ public class CustomerListController {
      */
     public void initStage(Parent root) {
 
+        // Create the scene
         Scene scene = new Scene(root);
+        
+        // Associate the scene to the stage
         stage.setScene(scene);
+        
+        // Set the window properties
         stage.setTitle("Customer List");
         stage.setResizable(false);
-        stage.show();
         
-        // Set listeners
+        // Set event handlers
         buttonClose.setOnAction(this::handleButtonCloseAction);
         buttonCreateCustomer.setOnAction(this::handleButtonCreateCustomerAction);
+        
+        // Show the window
+        stage.show();
     }
     
     private void loadCustomerTableData() {
