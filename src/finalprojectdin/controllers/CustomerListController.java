@@ -5,9 +5,11 @@
  */
 package finalprojectdin.controllers;
 
+import java.io.IOException;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -80,7 +82,15 @@ public class CustomerListController {
      * @param event Action event.
      */
     private void handleButtonCreateCustomerAction(ActionEvent event) {
-        
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/finalprojectdin/views/CreateCustomerView.fxml"));
+            Parent root = (Parent) loader.load();
+            CreateCustomerController controller = ((CreateCustomerController) loader.getController());
+            controller.setStage(new Stage());
+            controller.initStage(root);
+        } catch (IOException ex) {
+            LOGGER.warning("There was an error trying to open SignUpView. " + ex.getMessage());
+        }
     }
     
     /**
@@ -88,7 +98,7 @@ public class CustomerListController {
      * @param event Action event.
      */
     private void handleButtonCloseAction(ActionEvent event) {
-        LOGGER.info("Closing application...");
+        LOGGER.info("Closing customer list view...");
         stage.hide();
     }
 }
