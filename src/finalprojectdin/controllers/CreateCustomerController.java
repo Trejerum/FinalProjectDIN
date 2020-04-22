@@ -192,7 +192,7 @@ public class CreateCustomerController {
      * @param event Action event.
      */
     private void handleButtonAcceptAction(ActionEvent event) {
-        if(checkSyntax()) {
+        if(validateFields()) {
             LOGGER.info("aaa");
         }
     }
@@ -206,67 +206,89 @@ public class CreateCustomerController {
         stage.hide();
     }
     
-    private boolean checkSyntax() {
+    /**
+     * Validates the text field of the create customer window.
+     * @return true if correct, false if incorrect.
+     */
+    private boolean validateFields() {
         
-        boolean isCorrect = true;
+        boolean isValid = true;
         
+        // Make all the error labels invisible
         setErrorLabelsVisibility(false);
         
+        // Validate the first name text field
         if(textFieldFirstName.getText().isEmpty() || 
                 textFieldFirstName.getText().length() < 3 ||
                 textFieldFirstName.getText().length() > 128) {
             labelErrorFirstName.setVisible(true);
-            isCorrect = false;
+            isValid = false;
         } 
+        
+        // Validate the last name text field
         if(textFieldLastName.getText().isEmpty() || 
                 textFieldLastName.getText().length() < 3 ||
                 textFieldLastName.getText().length() > 128) {
             labelErrorLastName.setVisible(true);
-            isCorrect = false;
+            isValid = false;
         } 
+        
+        // Validate middle initial text field
         if(textFieldMiddleInitial.getText().isEmpty() ||
                 textFieldMiddleInitial.getText().length() != 1) {
             labelErrorMiddleInitial.setVisible(true);
-            isCorrect = false;
+            isValid = false;
         } 
+        
+        // Validate the street text field
         if(textFieldStreet.getText().isEmpty() || 
                 textFieldStreet.getText().length() < 3 ||
                 textFieldStreet.getText().length() > 128) {
             labelErrorStreet.setVisible(true);
-            isCorrect = false;
+            isValid = false;
         } 
+        
+        // Validate the city text field
         if(textFieldCity.getText().isEmpty() || 
                 textFieldCity.getText().length() < 3 ||
                 textFieldCity.getText().length() > 128) {
             labelErrorCity.setVisible(true);
-            isCorrect = false;
+            isValid = false;
         }
+        
+        // Validate the state text field
         if(textFieldState.getText().isEmpty() || 
                 textFieldState.getText().length() < 3 ||
                 textFieldState.getText().length() > 128) {
             labelErrorState.setVisible(true);
-            isCorrect = false;
+            isValid = false;
         } 
+        
+        // Validate the zip text field
         if(textFieldZip.getText().isEmpty() || 
                 textFieldZip.getText().length() < 3 ||
                 textFieldZip.getText().length() > 128) {
             labelErrorZip.setVisible(true);
-            isCorrect = false;
+            isValid = false;
         } 
+        
+        // Validate the phone text field
         if(textFieldPhone.getText().isEmpty() || 
                 textFieldPhone.getText().length() < 3 ||
                 textFieldPhone.getText().length() > 128) {
             labelErrorPhone.setVisible(true);
-            isCorrect = false;
+            isValid = false;
         } 
+        
+        // Validate the email text field
         if(textFieldEmail.getText().isEmpty() || 
                 textFieldEmail.getText().length() < 3 ||
                 textFieldEmail.getText().length() > 128) {
             labelErrorEmail.setVisible(true);
-            isCorrect = false;
+            isValid = false;
         }
         
-        return isCorrect;
+        return isValid;
     }
     
     /**

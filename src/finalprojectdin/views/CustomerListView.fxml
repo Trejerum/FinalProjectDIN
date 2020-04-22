@@ -26,15 +26,16 @@
          <children>
             <TableView id="tableViewCustomer" fx:id="tableViewCustomer" prefHeight="622.0" prefWidth="1006.0" style="-fx-background-color: #D8D8D8;">
               <columns>
-                <TableColumn id="tableColumnFirstName" prefWidth="75.0" text="First Name" />
-                <TableColumn id="tableColumnMiddleInitial" prefWidth="75.0" text="Middle Initial" />
-                  <TableColumn id="tableColumnLastName" prefWidth="75.0" text="Last Name" />
-                  <TableColumn id="tableColumnStreet" prefWidth="75.0" text="Street" />
-                  <TableColumn id="tableColumnCity" prefWidth="75.0" text="City" />
-                  <TableColumn id="tableColumnState" prefWidth="75.0" text="State" />
-                  <TableColumn id="tableColumnZip" prefWidth="75.0" text="Zip" />
-                  <TableColumn id="tableColumnPhone" prefWidth="75.0" text="Phone" />
-                  <TableColumn id="tableColumnEmail" prefWidth="75.0" text="Email" />
+                  <TableColumn id="tableColumnId" editable="false" minWidth="20.0" prefWidth="75.0" text="Id" />
+                <TableColumn id="tableColumnFirstName" minWidth="20.0" prefWidth="75.0" text="First Name" />
+                <TableColumn id="tableColumnMiddleInitial" minWidth="20.0" prefWidth="75.0" text="Middle Initial" />
+                  <TableColumn id="tableColumnLastName" minWidth="20.0" prefWidth="75.0" text="Last Name" />
+                  <TableColumn id="tableColumnStreet" minWidth="20.0" prefWidth="75.0" text="Street" />
+                  <TableColumn id="tableColumnCity" minWidth="20.0" prefWidth="75.0" text="City" />
+                  <TableColumn id="tableColumnState" minWidth="20.0" prefWidth="75.0" text="State" />
+                  <TableColumn id="tableColumnZip" minWidth="20.0" prefWidth="75.0" text="Zip" />
+                  <TableColumn id="tableColumnPhone" minWidth="20.0" prefWidth="75.0" text="Phone" />
+                  <TableColumn id="tableColumnEmail" minWidth="20.0" prefWidth="75.0" text="Email" />
               </columns>
                <HBox.margin>
                   <Insets bottom="15.0" left="15.0" top="10.0" />
