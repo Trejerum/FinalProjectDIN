@@ -17,7 +17,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
- *
+ * Controller for the CreateCustomerView.fxml view. Contains the logic for 
+ * creating a customer on the application.
  * @author Diego Corral
  */
 public class CreateCustomerController {

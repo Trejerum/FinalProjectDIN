@@ -16,7 +16,8 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 /**
- *
+ * Controller for the CustomerListView.fxml view. Shows the customers created 
+ * on the application.
  * @author Diego Corral
  */
 public class CustomerListController {
