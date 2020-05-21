@@ -26,16 +26,16 @@
          <children>
             <TableView id="tableViewCustomer" fx:id="tableViewCustomer" prefHeight="622.0" prefWidth="1006.0" style="-fx-background-color: #D8D8D8;">
               <columns>
-                  <TableColumn id="tableColumnId" editable="false" minWidth="20.0" prefWidth="75.0" style="-fx-alignment: CENTER-RIGHT;" text="Id" />
-                <TableColumn id="tableColumnFirstName" minWidth="20.0" prefWidth="75.0" text="First Name" />
-                <TableColumn id="tableColumnMiddleInitial" minWidth="20.0" prefWidth="75.0" text="Middle Initial" />
-                  <TableColumn id="tableColumnLastName" minWidth="20.0" prefWidth="75.0" text="Last Name" />
-                  <TableColumn id="tableColumnStreet" minWidth="20.0" prefWidth="75.0" text="Street" />
-                  <TableColumn id="tableColumnCity" minWidth="20.0" prefWidth="75.0" text="City" />
-                  <TableColumn id="tableColumnState" minWidth="20.0" prefWidth="75.0" text="State" />
-                  <TableColumn id="tableColumnZip" minWidth="20.0" prefWidth="75.0" style="-fx-alignment: CENTER-RIGHT;" text="Zip" />
-                  <TableColumn id="tableColumnPhone" minWidth="20.0" prefWidth="75.0" style="-fx-alignment: CENTER-RIGHT;" text="Phone" />
-                  <TableColumn id="tableColumnEmail" minWidth="20.0" prefWidth="75.0" text="Email" />
+                  <TableColumn id="tableColumnId" fx:id="tableColumnId" editable="false" minWidth="20.0" prefWidth="75.0" style="-fx-alignment: CENTER-RIGHT;" text="Id" />
+                <TableColumn id="tableColumnFirstName" fx:id="tableColumnFirstName" minWidth="20.0" prefWidth="75.0" text="First Name" />
+                  <TableColumn id="tableColumnLastName" fx:id="tableColumnLastName" minWidth="20.0" prefWidth="75.0" text="Last Name" />
+                <TableColumn id="tableColumnMiddleInitial" fx:id="tableColumnMiddleInitial" minWidth="20.0" prefWidth="75.0" text="Middle Initial" />
+                  <TableColumn id="tableColumnStreet" fx:id="tableColumnStreet" minWidth="20.0" prefWidth="75.0" text="Street" />
+                  <TableColumn id="tableColumnCity" fx:id="tableColumnCity" minWidth="20.0" prefWidth="75.0" text="City" />
+                  <TableColumn id="tableColumnState" fx:id="tableColumnState" minWidth="20.0" prefWidth="75.0" text="State" />
+                  <TableColumn id="tableColumnZip" fx:id="tableColumnZip" minWidth="20.0" prefWidth="75.0" style="-fx-alignment: CENTER-RIGHT;" text="Zip" />
+                  <TableColumn id="tableColumnPhone" fx:id="tableColumnPhone" minWidth="20.0" prefWidth="75.0" style="-fx-alignment: CENTER-RIGHT;" text="Phone" />
+                  <TableColumn id="tableColumnEmail" fx:id="tableColumnEmail" minWidth="20.0" prefWidth="75.0" text="Email" />
               </columns>
                <HBox.margin>
                   <Insets bottom="15.0" left="15.0" top="10.0" />
@@ -50,9 +50,14 @@
                      <VBox.margin>
                         <Insets top="40.0" />
                      </VBox.margin></Button>
+                  <Button id="buttonRefresh" fx:id="buttonRefresh" mnemonicParsing="false" prefHeight="26.0" prefWidth="177.0" style="-fx-background-color: white;" text="Refresh">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </Button>
                   <Button id="buttonClose" fx:id="buttonClose" mnemonicParsing="false" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: white;" text="Close">
                      <VBox.margin>
-                        <Insets top="530.0" />
+                        <Insets top="480.0" />
                      </VBox.margin>
                      <font>
                         <Font name="System Bold" size="12.0" />
