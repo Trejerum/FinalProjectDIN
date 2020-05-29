@@ -12,7 +12,7 @@ import javafx.scene.Parent;
 import javafx.stage.Stage;
 
 /**
- *
+ * 
  * @author Diego Corral
  */
 public class Application extends javafx.application.Application {

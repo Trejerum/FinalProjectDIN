@@ -5,16 +5,25 @@
  */
 package finalprojectdin.controllers;
 
+import finalprojectdin.classes.Customer;
+import finalprojectdin.clients.CustomerClient;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javax.ws.rs.ClientErrorException;
+import javax.ws.rs.core.GenericType;
 
 /**
  * Controller for the CreateCustomerView.fxml view. Contains the logic for 
@@ -29,9 +38,19 @@ public class CreateCustomerController {
     private static final Logger LOGGER = Logger.getLogger("finalprojectdin.controllers.CreateCustomerController");
     
     /**
+     * Client for the communication with the server
+     */
+    private static final CustomerClient CLIENT = new CustomerClient();
+    
+    /**
      * Stage of the controller.
      */
     private Stage stage;
+    
+    /**
+     * The customers of the application.
+     */
+    private Set<Customer> customers;
     
     /**
      * Text field for the users first name.
@@ -194,7 +213,19 @@ public class CreateCustomerController {
      */
     private void handleButtonAcceptAction(ActionEvent event) {
         if(validateFields()) {
-            LOGGER.info("aaa");
+            try {
+                createCustomer();
+            } catch(ClientErrorException ex) {
+                LOGGER.severe(ex.getMessage());
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Error connecting with the server."
+                        + " Please try again later.", ButtonType.OK);
+                alert.showAndWait();
+            } catch (Exception ex) {
+                LOGGER.severe(ex.getMessage());
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Error creating the customer."
+                        + " Please try again later.", ButtonType.OK);
+                alert.showAndWait();
+            } 
         }
     }
     
@@ -202,9 +233,85 @@ public class CreateCustomerController {
      * Handles the action of the close button.
      * @param event Action event.
      */
-    private void handleButtonCancelAction(ActionEvent event) {
+    private void handleButtonCancelAction(ActionEvent event) {       
         LOGGER.info("Closing create customer view...");
         stage.hide();
+    }
+    
+    /**
+     * It communicates with the server and creates the customer in the 
+     * application.
+     */
+    private void createCustomer() {
+        
+        Alert alert;
+        
+        try {
+            customers = CLIENT.findAll_XML(new GenericType<Set<Customer>>() {});
+            Customer customer = initializeCustomer();
+            CLIENT.create_XML(customer);
+            alert = new Alert(Alert.AlertType.INFORMATION, "Customer created successfully", ButtonType.OK);
+            alert.showAndWait();
+            LOGGER.info("Customer created successfully...");
+            stage.hide();
+        } catch(ClientErrorException e) {
+            LOGGER.severe(e.getMessage());
+            alert = new Alert(Alert.AlertType.WARNING, "Could not connect with the server."
+                    + " Please try again later.", ButtonType.OK);
+            alert.showAndWait();
+        } catch(Exception e) {
+            LOGGER.severe(e.getMessage());
+            alert = new Alert(Alert.AlertType.WARNING, "There was an error trying "
+                    + "to create the customer. Please try again later", ButtonType.OK);
+            alert.showAndWait();
+        }
+    }
+    
+    /**
+     * Initializes a Customer object with the data contained in the text fields.
+     * @return the initialized customer object.
+     */
+    private Customer initializeCustomer() {
+        
+        Customer customer = new Customer();
+        
+        customer.setId(generateRandomId());
+        customer.setFirstName(textFieldFirstName.getText());
+        customer.setLastName(textFieldLastName.getText());
+        customer.setMiddleInitial(textFieldMiddleInitial.getText());
+        customer.setMiddleInitial(customer.getMiddleInitial().toUpperCase() + ".");
+        customer.setStreet(textFieldStreet.getText());
+        customer.setCity(textFieldCity.getText());
+        customer.setState(textFieldState.getText());
+        customer.setZip(Integer.parseInt(textFieldZip.getText()));
+        customer.setPhone(Long.parseLong(textFieldPhone.getText()));
+        customer.setEmail(textFieldEmail.getText());
+        
+        return customer;
+    }
+    
+    /**
+     * Generates a random id for the created customer.
+     */
+    private Long generateRandomId() {
+        
+        Long randomId;
+        boolean isRepeated;
+        
+        do{
+            isRepeated = false;
+            // Create the random Id
+            randomId = ThreadLocalRandom.current().nextLong(0, 999999999);
+            //Check if its already in use by another customer
+            Iterator<Customer> iterator = customers. iterator();
+            while(iterator.hasNext()) {
+                if(iterator.next().getId().equals(randomId)) {
+                    isRepeated = true;
+                }
+            }
+        }while(isRepeated);
+        
+        return randomId;
     }
     
     /**

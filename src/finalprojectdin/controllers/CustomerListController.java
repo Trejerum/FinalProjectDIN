@@ -52,7 +52,7 @@ public class CustomerListController {
     /**
      * The customers of the application.
      */
-    Set<Customer> customers;
+    private Set<Customer> customers;
     
     /**
      * Button for creating a customer.
@@ -172,9 +172,49 @@ public class CustomerListController {
         // Show the window
         stage.show();
         
-        // Load the customers from the server.
+        // Load the customers from the server
         loadCustomerTableData();
 
+    }
+    
+    /**
+     * Handles the action of the create customer button. Opens 
+     * CreateCustomerView for creating a customer.
+     * @param event Action event.
+     */
+    private void handleButtonCreateCustomerAction(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/finalprojectdin/views/CreateCustomerView.fxml"));
+            Parent root = (Parent) loader.load();
+            CreateCustomerController controller = ((CreateCustomerController) loader.getController());
+            controller.setStage(new Stage());
+            controller.initStage(root);
+        } catch (IOException ex) {
+            LOGGER.warning(ex.getMessage());
+            Alert alert = new Alert(Alert.AlertType.WARNING, "An error occurred. Please try again later.", ButtonType.OK);
+            alert.showAndWait();
+        } catch (Exception ex) {
+            LOGGER.warning(ex.getMessage());
+            Alert alert = new Alert(Alert.AlertType.WARNING, "An error occurred. Please try again later.", ButtonType.OK);
+            alert.showAndWait();
+        }
+    }
+    
+    /**
+     * Reloads the customers from the server.
+     * @param event Action event.
+     */
+    private void handleButtonRefreshAction(ActionEvent event) {
+        loadCustomerTableData();
+    }
+    
+    /**
+     * Handles the close button action. Closes the application.
+     * @param event Action event.
+     */
+    private void handleButtonCloseAction(ActionEvent event) {
+        LOGGER.info("Closing customer list view...");
+        stage.hide();
     }
     
     /**
@@ -186,7 +226,6 @@ public class CustomerListController {
             ObservableList<Customer> observableShops = FXCollections.observableArrayList();
             
             customers = CLIENT.findAll_XML(new GenericType<Set<Customer>>() {});
-            
             LOGGER.info("Customers loaded correctly...");
             
             tableColumnId.setCellValueFactory(new PropertyValueFactory("id"));
@@ -210,46 +249,10 @@ public class CustomerListController {
             alert.showAndWait();
         } catch(Exception ex) {
             LOGGER.severe(ex.getMessage());
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Could not connect with the server."
+            Alert alert = new Alert(Alert.AlertType.WARNING, "An error occurred."
                     + " Please try again later.", ButtonType.OK);
             alert.showAndWait();
         }
         
-    }
-    
-    /**
-     * Handles the action of the create customer button. Opens 
-     * CreateCustomerView for creating a customer.
-     * @param event Action event.
-     */
-    private void handleButtonCreateCustomerAction(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/finalprojectdin/views/CreateCustomerView.fxml"));
-            Parent root = (Parent) loader.load();
-            CreateCustomerController controller = ((CreateCustomerController) loader.getController());
-            controller.setStage(new Stage());
-            controller.initStage(root);
-        } catch (IOException ex) {
-            LOGGER.warning(ex.getMessage());
-        } catch (Exception ex) {
-            LOGGER.warning(ex.getMessage());
-        }
-    }
-    
-    /**
-     * Reloads the customers from the server.
-     * @param event Action event.
-     */
-    private void handleButtonRefreshAction(ActionEvent event) {
-        loadCustomerTableData();
-    }
-    
-    /**
-     * Handles the close button action. Closes the application.
-     * @param event Action event.
-     */
-    private void handleButtonCloseAction(ActionEvent event) {
-        LOGGER.info("Closing customer list view...");
-        stage.hide();
     }
 }
