@@ -216,7 +216,7 @@ public class CreateCustomerController {
             try {
                 createCustomer();
             } catch(ClientErrorException ex) {
-                LOGGER.severe(ex.getMessage());
+                LOGGER.warning(ex.getMessage());
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Error connecting with the server."
                         + " Please try again later.", ButtonType.OK);
                 alert.showAndWait();
@@ -255,7 +255,7 @@ public class CreateCustomerController {
             LOGGER.info("Customer created successfully...");
             stage.hide();
         } catch(ClientErrorException e) {
-            LOGGER.severe(e.getMessage());
+            LOGGER.warning(e.getMessage());
             alert = new Alert(Alert.AlertType.WARNING, "Could not connect with the server."
                     + " Please try again later.", ButtonType.OK);
             alert.showAndWait();
@@ -273,8 +273,8 @@ public class CreateCustomerController {
      */
     private Customer initializeCustomer() {
         
+        //Create a customer with all the data from the text fields
         Customer customer = new Customer();
-        
         customer.setId(generateRandomId());
         customer.setFirstName(textFieldFirstName.getText());
         customer.setLastName(textFieldLastName.getText());
@@ -380,8 +380,8 @@ public class CreateCustomerController {
         
         // Validate the zip text field
         if(textFieldZip.getText().isEmpty() || 
-                textFieldZip.getText().length() < 3 ||
-                textFieldZip.getText().length() > 128 ||
+                textFieldZip.getText().length() < 1 ||
+                textFieldZip.getText().length() > 9 ||
                 !textFieldZip
                         .getText()
                         .chars()
@@ -393,8 +393,8 @@ public class CreateCustomerController {
         
         // Validate the phone text field
         if(textFieldPhone.getText().isEmpty() || 
-                textFieldPhone.getText().length() < 3 ||
-                textFieldPhone.getText().length() > 128 ||
+                textFieldPhone.getText().length() < 1 ||
+                textFieldPhone.getText().length() > 15 ||
                 !textFieldPhone
                         .getText()
                         .chars()

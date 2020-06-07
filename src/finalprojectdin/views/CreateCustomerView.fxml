@@ -10,7 +10,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finalprojectdin.controllers.CreateCustomerController">
    <children>
-      <Label prefHeight="53.0" prefWidth="601.0" style="-fx-border-color: black; -fx-background-color: #424242; -fx-text-fill: #F2F2F2;" text="Create Customer">
+      <Label prefHeight="53.0" prefWidth="600.0" style="-fx-border-color: black; -fx-background-color: #424242; -fx-text-fill: #F2F2F2;" text="Create Customer">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
@@ -172,11 +172,11 @@
             </VBox>
          </children>
       </HBox>
-      <HBox alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="70.0" prefWidth="600.0" style="-fx-border-color: black; -fx-background-color: #D8D8D8;">
+      <HBox alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="70.0" prefWidth="550.0" style="-fx-border-color: black; -fx-background-color: #D8D8D8;">
          <children>
             <Button id="buttonAccept" fx:id="buttonAccept" mnemonicParsing="false" text="Accept">
                <HBox.margin>
-                  <Insets right="200.0" />
+                  <Insets right="180.0" />
                </HBox.margin>
             </Button>
             <Button id="buttonCancel" fx:id="buttonCancel" mnemonicParsing="false" text="Cancel">
